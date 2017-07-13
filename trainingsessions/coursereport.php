@@ -132,7 +132,7 @@ if (!empty($targetusers)) {
             $data->elapsed = $data->activityelapsed + $data->otherelapsed + $data->course->elapsed;
             $data->events = $data->activityevents + $data->otherevents + $data->course->events;
             $sesscount = report_trainingsessions_count_sessions_in_course($aggregate['sessions'], $course->id);
-            $data->sessions = (!empty($aggregate['sessions'])) ? $sesscount : 0;
+            $data->workingsessions = (!empty($aggregate['sessions'])) ? $sesscount : 0;
             foreach (array_keys($aggregate) as $module) {
                 /*
                  * Exclude from calculation some pseudo-modules that are not part of

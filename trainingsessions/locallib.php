@@ -43,7 +43,6 @@ define('TR_GRADE_SOURCE_COURSE_EXT', 2);
 define('TR_TIMEGRADE_DISABLED', 0);
 define('TR_TIMEGRADE_GRADE', -1);
 define('TR_TIMEGRADE_BONUS', -2);
-define('TR_LINEAGGREGATORS', -3);
 define('TR_XLSGRADE_FORMULA1', -10);
 define('TR_XLSGRADE_FORMULA2', -11);
 define('TR_XLSGRADE_FORMULA3', -12);
@@ -79,19 +78,7 @@ function report_trainingsessions_supports_feature($feature) {
         ));
     }
 
-    // Check existance of the 'pro' dir in plugin.
-    if (is_dir(__DIR__.'/pro')) {
-        if ($feature == 'emulate/community') {
-            return 'pro';
-        }
-        if (empty($config->emulatecommunity)) {
-            $versionkey = 'pro';
-        } else {
-            $versionkey = 'community';
-        }
-    } else {
-        $versionkey = 'community';
-    }
+    $versionkey = 'community';
 
     list($feat, $subfeat) = explode('/', $feature);
 

@@ -110,28 +110,15 @@ if ($alldata) {
             }
         } else if ($datum->moduleid > 0) {
             $formdata->moduleid[$ix] = $datum->moduleid;
+            $formdata->displayed[$ix] = $datum->displayed;
             $formdata->scorelabel[$ix] = $datum->label;
             $ix++;
-        } else if ($datum->moduleid == TR_LINEAGGREGATORS) {
-            $formdata->lineaggregators = $datum->label;
         } else if ($datum->moduleid >= TR_XLSGRADE_FORMULA1) {
             $ix = $datum->moduleid - TR_XLSGRADE_FORMULA1 + 1;
             $formulakey = 'calculated'.$ix;
             $labelkey = 'calculated'.$ix.'label';
             $formdata->$labelkey = $datum->label;
             $formdata->$formulakey = $datum->ranges;
-        } else {
-            // Special grades.
-            $formdata->specialgrade = $datum->moduleid;
-            $ranges = json_decode(@$datum->ranges);
-            $ranges = (array)$ranges;
-            if (!empty($ranges)) {
-                $formdata->timegraderanges = implode(',', (array)$ranges['ranges']);
-                $formdata->timegrademode = @$ranges['timemode'];
-                $formdata->bonusgrademode = @$ranges['bonusmode'];
-                $formdata->timegradesource = @$ranges['timesource'];
-            }
-            $formdata->timegrade = $datum->grade;
         }
     }
     $form->set_data($formdata);

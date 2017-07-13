@@ -25,6 +25,9 @@
  */
 defined('MOODLE_INTERNAL') || die();
 
+//@TODO Fix batch report
+die();
+
 require_once($CFG->dirroot.'/blocks/use_stats/locallib.php');
 require_once($CFG->dirroot.'/report/trainingsessions/locallib.php');
 require_once($CFG->dirroot.'/report/trainingsessions/selector_form.php');

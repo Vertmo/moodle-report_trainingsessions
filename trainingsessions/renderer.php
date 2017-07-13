@@ -53,7 +53,8 @@ class report_trainingsessions_renderer extends plugin_renderer_base {
             $rows[0][] = new tabobject('course', $courseurl, get_string('course', 'report_trainingsessions'));
         }
 
-        if (has_capability('report/trainingsessions:batch', $context)) {
+        //TODO Fix batch report
+        /*if (has_capability('report/trainingsessions:batch', $context)) {
             $params = array('id' => $course->id, 'view' => 'courseraw');
             $params["from[day]"] = date('d', $from);
             $params["from[month]"] = date('m', $from);
@@ -63,7 +64,8 @@ class report_trainingsessions_renderer extends plugin_renderer_base {
             $params["to[year]"] = date('Y', $to);
             $courserawurl = new moodle_url('/report/trainingsessions/index.php', $params);
             $rows[0][] = new tabobject('courseraw', $courserawurl, get_string('courseraw', 'report_trainingsessions'));
-        }
+        }*/
+
         if (has_capability('report/trainingsessions:viewother', $context)) {
             $params = array('id' => $course->id, 'view' => 'allcourses', 'from' => $from, 'to' => $to);
             $allcoursesurl = new moodle_url('/report/trainingsessions/index.php', $params);

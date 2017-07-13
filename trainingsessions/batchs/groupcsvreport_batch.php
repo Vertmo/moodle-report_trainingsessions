@@ -46,8 +46,7 @@ $reportformat = 'csv';
 
 if ($reportlayout == 'onefulluserpersheet') {
     print_error('unsupported', 'report_trainingsessions');
-} else if ($reportlayout == 'oneuserperrow') {
-    $reporttype = 'summary';
+batch    $reporttype = 'summary';
     $range = 'group';
 } else {
     $reporttype = 'sessions';

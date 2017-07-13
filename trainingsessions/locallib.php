@@ -1655,7 +1655,7 @@ function report_trainingsessions_map_summary_cols($cols, &$user, &$aggregate, &$
         'extelapsedlastweek' => 0 + @$w[$courseid]->elapsed + @$w[0]->elapsed + @$w[1]->elapsed,
         'exttimelastweek' => 0 + @$w[$courseid]->elapsed + @$w[0]->elapsed + @$w[1]->elapsed,
         'extotherlastweek' => 0 + @$w[0]->elapsed + @$w[SITEID]->elapsed,
-        'sessions' => $sessions
+        'workingsessions' => $sessions
     );
 
     $data = array();

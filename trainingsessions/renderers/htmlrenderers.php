@@ -338,29 +338,6 @@ function report_trainingsessions_print_header_html($userid, $courseid, $data, $s
         $str .= '<span class="attribute-value">'.$user->department.'</span></div>';
     }
 
-    /*// Print roles list.
-    $context = context_course::instance($courseid);
-    $roles = role_fix_names(get_all_roles(), context_system::instance(), ROLENAME_ORIGINAL);
-    $str .= '<br/><b>'.get_string('roles').' : </b>';
-    $userroles = get_user_roles($context, $userid);
-    $uroles = array();
-
-    foreach ($userroles as $rid => $r) {
-        $uroles[] = $roles[$r->roleid]->localname;
-    }
-    $str .= implode (",", $uroles);
-    $str .= '<br/>';
-
-    if (!empty($data->linktousersheet)) {
-        $params = array('view' => 'user',
-                        'id' => $courseid,
-                        'userid' => $userid,
-                        'from' => $data->from,
-                        'to' => $data->to);
-        $detailurl = new moodle_url('/report/trainingsessions/index.php', $params);
-        //$str .= '<br/><a href="'.$detailurl.'">'.get_string('seedetails', 'report_trainingsessions').'</a>';
-    }*/
-
     if ($withcompletion) {
         // Print completion bar.
         $str .= report_trainingsessions_print_completionbar(0 + @$data->items, 0 + @$data->done, 500);
@@ -451,7 +428,7 @@ function report_trainingsessions_print_header_html($userid, $courseid, $data, $s
 
     if (in_array('workingsessions', $cols)) {
         $str .= '<b>'.get_string('workingsessions', 'report_trainingsessions');
-        $str .= ' : </b>'.(0 + @$data->sessions);
+        $str .= ' : </b>'.(0 + @$data->workingsessions);
     }
 
     $str .= '</div></div>';

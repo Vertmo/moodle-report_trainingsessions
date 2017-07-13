@@ -143,16 +143,13 @@ $result = ob_get_clean();
 echo $result;
 
 echo '<br/><center>';
-
 $params = array('id' => $course->id,
                 'view' => 'user',
                 'userid' => $data->userid,
                 'from' => $data->from,
                 'to' => $data->to);
 $xlsurl = new moodle_url('/report/trainingsessions/tasks/userxlsreportperuser_batch_task.php', $params);
-echo '<div class="trainingsessions-inline">';
 echo $OUTPUT->single_button($xlsurl, get_string('generatexls', 'report_trainingsessions'));
-echo '</div>';
 
 $now = time();
 $filename = 'report_user_detail_'.$data->userid.'_'.$course->id.'_'.date('Ymd_His', $now).'.pdf';
@@ -164,9 +161,7 @@ $params = array('coursename' => $course->fullname . ' ('.$course->idnumber.')',
             'outputname' => $filename,
             'result' => $result);
 $pdfurl = new moodle_url('/report/trainingsessions/generate_pdf.php', $params);
-echo '<div class="trainingsessions-inline">';
 echo $OUTPUT->single_button($pdfurl, get_string('generatepdf', 'report_trainingsessions'), 'post');
-echo '</div>';
 
 /*echo '<h3>'.get_string('quickmonthlyreport', 'report_trainingsessions').'</h3>';
 echo $renderer->user_session_reports_buttons($data->userid, 'course');

@@ -166,10 +166,8 @@ $options['to'] = $data->to; // Alternate way.
 $options['output'] = 'xls'; // Ask for XLS.
 $options['asxls'] = 'xls'; // Force XLS for index.php.
 $options['view'] = 'course'; // Force course view.
+
 echo '<br/><center>';
-echo '<div class="report-buttons">';
-echo '<div class="table-row">';
-echo '<div class="tr-summary table-cell">';
 $params = array('id' => $course->id,
                 'from' => $data->from,
                 'to' => $data->to,
@@ -177,8 +175,7 @@ $params = array('id' => $course->id,
                 'groupid' => $data->groupid);
 $csvurl = new moodle_url('/report/trainingsessions/tasks/groupcsvreportonerow_batch_task.php', $params);
 echo $OUTPUT->single_button($csvurl, get_string('generatecsv', 'report_trainingsessions'), 'get');
-echo '</div>';
-echo '<div class="tr-detailed table-cell">';
+
 $params = array('id' => $course->id,
                 'view' => 'course',
                 'groupid' => $data->groupid,
@@ -187,8 +184,7 @@ $params = array('id' => $course->id,
                 'output' => 'xls');
 $url = new moodle_url('/report/trainingsessions/tasks/groupxlsreportperuser_batch_task.php', $params);
 echo $OUTPUT->single_button($url, get_string('generatexls', 'report_trainingsessions'), 'get');
-echo '</div>';
-echo '<div class="tr-detailed table-cell">';
+
 $params = array('coursename' => $course->fullname . ' ('.$course->idnumber.')',
                 'view' => 'course',
                 'groupid' => $data->groupid,
@@ -197,8 +193,5 @@ $params = array('coursename' => $course->fullname . ' ('.$course->idnumber.')',
                 'result' => $result);
 $url = new moodle_url('/report/trainingsessions/generate_pdf.php', $params);
 echo $OUTPUT->single_button($url, get_string('generatepdf', 'report_trainingsessions'), 'post');
-echo '</div>';
-echo '</div>';
-echo '</div>';
+
 echo '</center>';
-echo '<br/>';
